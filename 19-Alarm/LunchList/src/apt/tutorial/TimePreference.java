@@ -6,6 +6,8 @@ import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TimePicker;
+import android.text.format.DateFormat;
+
 
 public class TimePreference extends DialogPreference {
   private int lastHour=0;
@@ -34,7 +36,8 @@ public class TimePreference extends DialogPreference {
   @Override
   protected View onCreateDialogView() {
     picker=new TimePicker(getContext());
-    
+    if (DateFormat.is24HourFormat(getContext()))
+      picker.setIs24HourView(true);
     return(picker);
   }
   
